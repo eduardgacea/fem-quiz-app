@@ -1,0 +1,43 @@
+:root {
+    /* colors */
+    /* shared */
+    --clr-accent: #a729f5;
+    --clr-correct: #26d782;
+    --clr-wrong: #ee5454;
+    /* light theme */
+    --clr-lt-700: #ffffff;
+    --clr-lt-600: #f4f6fa;
+    --clr-lt-300: #abc1e1;
+    /* dark theme */
+    --clr-dt-700: #626c7f;
+    --clr-dt-600: #3b4d66;
+    --clr-dt-300: #313e51;
+
+    /* typography */
+    /* families */
+    --ff-primary: "Rubik", sans-serif;
+    /* styles */
+    --f-display: normal normal 500 9rem/100% var(--ff-primary);
+    --f-heading-l-medium: normal normal 500 4rem/100% var(--ff-primary);
+    --f-heading-l-regular: normal normal 400 4rem/100% var(--ff-primary);
+    --f-heading-m: normal normal 500 2.25rem/100% var(--ff-primary);
+    --f-heading-s: normal normal 500 1.75rem/100% var(--ff-primary);
+    --f-body-m: normal normal 400 0.75rem/150% var(--ff-primary);
+    --f-body-s: italic normal 400 0.75rem/150% var(--ff-primary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: var(--fs-m);
+    font-weight: var(--fw-regular);
+}
