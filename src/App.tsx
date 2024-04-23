@@ -1,5 +1,11 @@
+import ThemeToggle from "./components/ThemeToggle";
+
 function App() {
-    return <div>App</div>;
+    return (
+        <>
+            <ThemeToggle />
+        </>
+    );
 }
 
 export default App;
