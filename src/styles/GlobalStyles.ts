@@ -1,4 +1,12 @@
-:root {
+import { createGlobalStyle } from "styled-components";
+import { quizzes } from "../data/data.json";
+
+const colors = ["#fff1e9", "#e0fdef", "#ebf0ff", "#f6e7ff"];
+if (colors.length !== quizzes.length) throw new Error("number of quizzes does not match number of colors");
+const colorMap = quizzes.map((quiz, index) => `--clr-${quiz.title.toLowerCase()}: ${colors[index]}`).join("\n");
+
+const GlobalStyles = createGlobalStyle`
+    :root {
     /* colors */
     /* shared */
     --clr-accent: #a729f5;
@@ -12,6 +20,8 @@
     --clr-dt-700: #626c7f;
     --clr-dt-600: #3b4d66;
     --clr-dt-300: #313e51;
+    /* icons */
+    ${colorMap}
 
     /* typography */
     /* families */
@@ -24,10 +34,14 @@
     --f-heading-s: normal normal 500 1.75rem/100% var(--ff-primary);
     --f-body-m: normal normal 400 0.75rem/150% var(--ff-primary);
     --f-body-s: italic normal 400 0.75rem/150% var(--ff-primary);
-}
+    }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+`;
+
+export default GlobalStyles;
