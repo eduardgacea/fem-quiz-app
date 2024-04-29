@@ -1,6 +1,7 @@
 import { quizzes } from "./data/data.json";
 
 import ResizeListener from "./components/ResizeListener";
+import ThemeListener from "./components/ThemeListener";
 import GlobalStyles from "./styles/GlobalStyles";
 import ThemeToggle from "./ui/ThemeToggle";
 import Backdrop from "./ui/Backdrop";
@@ -23,6 +24,7 @@ function App() {
         >
             <GlobalStyles />
             <ResizeListener />
+            <ThemeListener />
             <Backdrop />
             <ThemeToggle />
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }}>

@@ -27,7 +27,7 @@ const StyledSwitch = styled(Form)`
 `;
 
 function ThemeToggle() {
-    const theme = useSelector((state: RootState) => state.theme.value);
+    const iconTheme = useSelector((state: RootState) => state.theme.value) === "light" ? "dark" : "light";
     const dispatch = useDispatch();
 
     const handleToggle = () => dispatch(toggleTheme());
@@ -35,13 +35,13 @@ function ThemeToggle() {
     return (
         <Container>
             <div>
-                <img src={`icon-sun-${theme}.svg`} />
+                <img src={`icon-sun-${iconTheme}.svg`} />
             </div>
             <StyledSwitch>
                 <Form.Switch type="switch" onClick={handleToggle} />
             </StyledSwitch>
             <div>
-                <img src={`icon-moon-${theme}.svg`} />
+                <img src={`icon-moon-${iconTheme}.svg`} />
             </div>
         </Container>
     );

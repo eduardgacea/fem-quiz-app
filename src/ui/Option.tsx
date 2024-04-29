@@ -17,6 +17,7 @@ const MainContainer = styled.div`
     gap: 1rem;
     padding: 0.75rem;
     border-radius: 0.75rem;
+    box-shadow: var(--shadow);
 `;
 
 const IconContainer = styled.div<IconContainerProps>`

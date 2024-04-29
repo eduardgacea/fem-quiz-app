@@ -21,6 +21,8 @@ const GlobalStyles = createGlobalStyle`
     --clr-dt-700: #626c7f;
     --clr-dt-600: #3b4d66;
     --clr-dt-300: #313e51;
+    /* shadows */
+    --shadow: 0 16px 40px 0 rgba(143, 160, 193, 14%);
     /* icons */
     --i-size: 1.78125rem;
     ${colorMap}
@@ -46,6 +48,14 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         background: var(--clr-lt-300);
+    }
+
+    .body-light {
+        background: var(--clr-lt-600);
+    }
+
+    .body-dark {
+        background: var(--clr-dt-300);
     }
 
 `;
