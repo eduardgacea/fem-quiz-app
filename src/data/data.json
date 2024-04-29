@@ -181,7 +181,7 @@
         },
         {
             "id": 3,
-            "title": "JavaScript",
+            "title": "Javascript",
             "icon": "./assets/images/icon-js.svg",
             "questions": [
                 {

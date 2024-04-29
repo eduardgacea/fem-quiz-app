@@ -3,12 +3,13 @@ import { quizzes } from "../data/data.json";
 
 const colors = ["#fff1e9", "#e0fdef", "#ebf0ff", "#f6e7ff"];
 if (colors.length !== quizzes.length) throw new Error("number of quizzes does not match number of colors");
-const colorMap = quizzes.map((quiz, index) => `--clr-${quiz.title.toLowerCase()}: ${colors[index]}`).join("\n");
+const colorMap = quizzes.map((quiz, index) => `--clr-${quiz.title.toLowerCase()}: ${colors[index]};`).join("\n");
 
 const GlobalStyles = createGlobalStyle`
     :root {
     /* colors */
     /* shared */
+    --clr-white: #ffffff;
     --clr-accent: #a729f5;
     --clr-correct: #26d782;
     --clr-wrong: #ee5454;
@@ -21,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
     --clr-dt-600: #3b4d66;
     --clr-dt-300: #313e51;
     /* icons */
+    --i-size: 1.78125rem;
     ${colorMap}
 
     /* typography */
@@ -32,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
     --f-heading-l-regular: normal normal 400 4rem/100% var(--ff-primary);
     --f-heading-m: normal normal 500 2.25rem/100% var(--ff-primary);
     --f-heading-s: normal normal 500 1.75rem/100% var(--ff-primary);
-    --f-body-m: normal normal 400 0.75rem/150% var(--ff-primary);
+    --f-body-m: normal normal 500 1.125rem/150% var(--ff-primary);
     --f-body-s: italic normal 400 0.75rem/150% var(--ff-primary);
     }
 
@@ -40,6 +42,10 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+
+    body {
+        background: var(--clr-lt-300);
     }
 
 `;
