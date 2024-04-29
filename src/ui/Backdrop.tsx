@@ -15,7 +15,7 @@ function Backdrop() {
 
     return (
         <BackdropContainer>
-            <img src={`pattern-background-${device}-${theme}.svg`} alt="backdrop" />;
+            <img src={`pattern-background-${device}-${theme}.svg`} alt="backdrop" />
         </BackdropContainer>
     );
 }
