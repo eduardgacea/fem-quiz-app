@@ -1,3 +1,5 @@
+import { quizzes } from "./data/data.json";
+
 import ResizeListener from "./components/ResizeListener";
 import GlobalStyles from "./styles/GlobalStyles";
 import ThemeToggle from "./ui/ThemeToggle";
@@ -5,8 +7,6 @@ import Backdrop from "./ui/Backdrop";
 import Option from "./ui/Option";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import { quizzes } from "./data/data.json";
 
 function App() {
     return (

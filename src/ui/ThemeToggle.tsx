@@ -2,9 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../slices/themeSlice";
 import { RootState } from "../redux/store";
 import { Form } from "react-bootstrap";
+
 import styled from "styled-components";
 
-// prettier-ignore
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+
+    & > form {
+        padding-left: 0.5em;
+    }
+`;
+
 const StyledSwitch = styled(Form)`
     & .form-check-input:checked,
     & .form-check-input {
@@ -24,9 +33,17 @@ function ThemeToggle() {
     const handleToggle = () => dispatch(toggleTheme());
 
     return (
-        <StyledSwitch>
-            <Form.Switch type="switch" onClick={handleToggle} />
-        </StyledSwitch>
+        <Container>
+            <div>
+                <img src={`icon-sun-${theme}.svg`} />
+            </div>
+            <StyledSwitch>
+                <Form.Switch type="switch" onClick={handleToggle} />
+            </StyledSwitch>
+            <div>
+                <img src={`icon-moon-${theme}.svg`} />
+            </div>
+        </Container>
     );
 }
 
