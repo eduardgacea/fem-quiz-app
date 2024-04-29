@@ -8,6 +8,7 @@ import styled from "styled-components";
 const Container = styled.div`
     display: flex;
     align-items: center;
+    padding: 1rem 0;
 
     & > form {
         padding-left: 0.5em;

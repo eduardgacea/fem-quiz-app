@@ -22,7 +22,8 @@ const GlobalStyles = createGlobalStyle`
     --clr-dt-600: #3b4d66;
     --clr-dt-300: #313e51;
     /* shadows */
-    --shadow: 0 16px 40px 0 rgba(143, 160, 193, 14%);
+    --lt-shadow: 0 16px 40px 0 rgba(143, 160, 193, 14%);
+    --dt-shadow: 0 16px 40px 0 rgba(49, 62, 81, 14%);
     /* icons */
     --i-size: 1.78125rem;
     ${colorMap}
@@ -38,6 +39,10 @@ const GlobalStyles = createGlobalStyle`
     --f-heading-s: normal normal 500 1.75rem/100% var(--ff-primary);
     --f-body-m: normal normal 500 1.125rem/150% var(--ff-primary);
     --f-body-s: italic normal 400 0.75rem/150% var(--ff-primary);
+
+    --f-mobile-heading-l-light: normal normal 300 2.5rem/100% var(--ff-primary);
+    --f-mobile-heading-l-medium: normal normal 500 2.5rem/100% var(--ff-primary);
+    --f-mobile-heading-m-light-italic: italic normal 300 0.875rem/150% var(--ff-primary)
     }
 
     * {

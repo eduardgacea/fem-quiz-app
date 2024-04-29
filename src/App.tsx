@@ -1,40 +1,26 @@
-import { quizzes } from "./data/data.json";
+import { Status } from "./types/gameTypes";
+import { RootState } from "./redux/store";
+import { useSelector } from "react-redux";
 
 import ResizeListener from "./components/ResizeListener";
 import ThemeListener from "./components/ThemeListener";
 import GlobalStyles from "./styles/GlobalStyles";
-import ThemeToggle from "./ui/ThemeToggle";
+import HomePage from "./pages/home/HomePage";
 import Backdrop from "./ui/Backdrop";
-import Option from "./ui/Option";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+    const gameStatus = useSelector((state: RootState) => state.game.status);
+
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                background: "transparent",
-                height: "100dvh",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "0 24px",
-            }}
-        >
+        <>
             <GlobalStyles />
             <ResizeListener />
             <ThemeListener />
             <Backdrop />
-            <ThemeToggle />
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }}>
-                {quizzes.map(quiz => (
-                    <Option key={quiz.id} type="subject" icon={`icon-${quiz.title.toLowerCase()}.svg`}>
-                        {quiz.title}
-                    </Option>
-                ))}
-            </div>
-        </div>
+            {gameStatus === Status.Idle && <HomePage />}
+        </>
     );
 }
 
