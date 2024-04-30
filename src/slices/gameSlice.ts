@@ -1,10 +1,16 @@
 import { Status, GameState } from "../types/gameTypes";
 import { createSlice } from "@reduxjs/toolkit";
+import { quizzes } from "../data/data.json";
 
 const initialState: GameState = {
     status: Status.Idle,
-    currentQuizId: undefined,
-    currentQuestionId: undefined,
+    quiz: {
+        id: undefined,
+        title: undefined,
+        icon: undefined,
+        questions: [],
+    },
+    currentQuestionIndex: undefined,
     score: undefined,
 };
 
@@ -14,7 +20,9 @@ export const gameSlice = createSlice({
     reducers: {
         choseQuiz: (state, action) => {
             state.status = Status.Active;
-            state.currentQuizId = action.payload;
+            state.quiz = quizzes.find(quiz => quiz.id === action.payload)!;
+            state.currentQuestionIndex = 0;
+            state.score = 0;
         },
     },
 });

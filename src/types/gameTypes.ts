@@ -8,9 +8,21 @@ export enum Status {
     Finished = "finished",
 }
 
+export type Quiz = {
+    id: number | undefined;
+    title: string | undefined;
+    icon: string | undefined;
+    questions: {
+        id: number;
+        question: string;
+        options: string[];
+        answer: string;
+    }[];
+};
+
 export type GameState = {
     status: Status;
-    currentQuizId: QuizId | undefined;
-    currentQuestionId: QuestionId | undefined;
+    quiz: Quiz;
+    currentQuestionIndex: number | undefined;
     score: number | undefined;
 };

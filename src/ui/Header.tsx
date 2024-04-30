@@ -13,10 +13,8 @@ const StyledHeader = styled.header`
 `;
 
 function Header() {
-    const currentQuizId = useSelector((state: RootState) => state.game.currentQuizId);
+    const currentQuizId = useSelector((state: RootState) => state.game.quiz.id);
     const currentQuiz = quizzes.find(quiz => quiz.id === currentQuizId)!;
-
-    console.log(currentQuiz);
 
     return (
         <StyledHeader>
