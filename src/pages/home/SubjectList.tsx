@@ -1,8 +1,10 @@
+import { useDispatch } from "react-redux";
 import { quizzes } from "../../data/data.json";
 
 import Option from "../../ui/Option";
 
 import styled from "styled-components";
+import { choseQuiz } from "../../slices/gameSlice";
 
 const List = styled.ul`
     margin: 2.5rem 0 0 0;
@@ -13,10 +15,19 @@ const List = styled.ul`
 `;
 
 function SubjectList() {
+    const dispatch = useDispatch();
+
+    const handleChoseQuiz = (id: number) => dispatch(choseQuiz(id));
+
     return (
         <List>
             {quizzes.map(quiz => (
-                <Option key={quiz.id} type="subject" icon={`icon-${quiz.title.toLowerCase()}.svg`} id={quiz.id}>
+                <Option
+                    key={quiz.id}
+                    type="subject"
+                    icon={`icon-${quiz.title.toLowerCase()}.svg`}
+                    onClick={() => handleChoseQuiz(quiz.id)}
+                >
                     {quiz.title}
                 </Option>
             ))}

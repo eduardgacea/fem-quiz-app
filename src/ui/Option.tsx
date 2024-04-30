@@ -1,8 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { choseQuiz } from "../slices/gameSlice";
 import { Theme } from "../types/themeTypes";
-import { QuizId } from "../types/gameTypes";
 import { RootState } from "../redux/store";
+import { useSelector } from "react-redux";
 
 import styled from "styled-components";
 
@@ -10,7 +8,7 @@ type OptionProps = {
     children: string;
     type: "subject" | "answer";
     icon: string;
-    id?: QuizId;
+    onClick?: (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
 type IconContainerProps = {
@@ -50,16 +48,13 @@ const IconContainer = styled.div<IconContainerProps>`
     }
 `;
 
-function Option({ children, type, icon, id }: OptionProps) {
+function Option({ children, type, icon, onClick }: OptionProps) {
     const theme = useSelector((state: RootState) => state.theme.value);
-    const dispatch = useDispatch();
 
     const backgroundColor = `var(--clr-${children.toLowerCase()})`;
 
-    const handleChoseQuiz = () => dispatch(choseQuiz(id));
-
     return (
-        <MainContainer $theme={theme} onClick={handleChoseQuiz}>
+        <MainContainer $theme={theme} onClick={onClick}>
             <IconContainer $backgroundColor={backgroundColor}>
                 {type === "subject" ? <img src={icon} alt="quiz name" /> : icon}
             </IconContainer>
