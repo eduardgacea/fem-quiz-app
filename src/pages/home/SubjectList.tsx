@@ -16,7 +16,7 @@ function SubjectList() {
     return (
         <List>
             {quizzes.map(quiz => (
-                <Option key={quiz.id} type="subject" icon={`icon-${quiz.title.toLowerCase()}.svg`}>
+                <Option key={quiz.id} type="subject" icon={`icon-${quiz.title.toLowerCase()}.svg`} id={quiz.id}>
                     {quiz.title}
                 </Option>
             ))}

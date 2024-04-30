@@ -1,5 +1,5 @@
-type QuizId = number;
-type QuestionId = number;
+export type QuizId = number;
+export type QuestionId = number;
 
 export enum Status {
     Idle = "idle",

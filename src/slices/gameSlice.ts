@@ -11,7 +11,14 @@ const initialState: GameState = {
 export const gameSlice = createSlice({
     name: "game",
     initialState,
-    reducers: {},
+    reducers: {
+        choseQuiz: (state, action) => {
+            state.status = Status.Active;
+            state.currentQuiz = action.payload;
+        },
+    },
 });
+
+export const { choseQuiz } = gameSlice.actions;
 
 export default gameSlice.reducer;
