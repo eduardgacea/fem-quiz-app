@@ -42,7 +42,9 @@ const GlobalStyles = createGlobalStyle`
 
     --f-mobile-heading-l-light: normal normal 300 2.5rem/100% var(--ff-primary);
     --f-mobile-heading-l-medium: normal normal 500 2.5rem/100% var(--ff-primary);
-    --f-mobile-heading-m-regular-italic: italic normal 400 0.875rem/150% var(--ff-primary)
+    --f-mobile-heading-m-regular-italic: italic normal 400 0.875rem/150% var(--ff-primary);
+    
+    --f-mobile-question: normal normal 500 1.25rem/120% var(--ff-primary);
     }
 
     * {
