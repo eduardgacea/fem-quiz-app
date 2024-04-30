@@ -8,6 +8,7 @@ type OptionProps = {
     children: string;
     type: "subject" | "answer";
     icon: string;
+    isTransparent?: boolean;
     onClick?: (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
@@ -17,16 +18,23 @@ type IconContainerProps = {
 
 type MainContainerProps = {
     $theme: Theme;
+    $isTransparent: boolean;
 };
 
 const MainContainer = styled.li<MainContainerProps>`
     display: flex;
     align-items: center;
-    background-color: ${props => (props.$theme === "light" ? "var(--clr-white)" : "var(--clr-dt-600)")};
+    background-color: ${props => {
+        if (props.$isTransparent) return "transparent";
+        else return props.$theme === "light" ? "var(--clr-white)" : "var(--clr-dt-600)";
+    }};
     gap: 1rem;
     padding: 0.75rem;
     border-radius: 0.75rem;
-    box-shadow: ${props => (props.$theme === "light" ? "var(--lt-shadow)" : "var(--dt-shadow)")};
+    box-shadow: ${props => {
+        if (props.$isTransparent) return "none";
+        else return props.$theme === "light" ? "var(--lt-shadow)" : "var(--dt-shadow)";
+    }};
 
     h2 {
         font: var(--f-body-m);
@@ -48,13 +56,13 @@ const IconContainer = styled.div<IconContainerProps>`
     }
 `;
 
-function Option({ children, type, icon, onClick }: OptionProps) {
+function Option({ children, type, icon, isTransparent = false, onClick }: OptionProps) {
     const theme = useSelector((state: RootState) => state.theme.value);
 
     const backgroundColor = `var(--clr-${children.toLowerCase()})`;
 
     return (
-        <MainContainer $theme={theme} onClick={onClick}>
+        <MainContainer $theme={theme} $isTransparent={isTransparent} onClick={onClick}>
             <IconContainer $backgroundColor={backgroundColor}>
                 {type === "subject" ? <img src={icon} alt="quiz name" /> : icon}
             </IconContainer>

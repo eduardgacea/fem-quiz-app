@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: GameState = {
     status: Status.Idle,
-    currentQuiz: undefined,
-    currentQuestion: undefined,
+    currentQuizId: undefined,
+    currentQuestionId: undefined,
     score: undefined,
 };
 
@@ -14,7 +14,7 @@ export const gameSlice = createSlice({
     reducers: {
         choseQuiz: (state, action) => {
             state.status = Status.Active;
-            state.currentQuiz = action.payload;
+            state.currentQuizId = action.payload;
         },
     },
 });

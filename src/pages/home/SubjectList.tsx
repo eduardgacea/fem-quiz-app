@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
+import { choseQuiz } from "../../slices/gameSlice";
 import { quizzes } from "../../data/data.json";
+import { useDispatch } from "react-redux";
 
 import Option from "../../ui/Option";
 
 import styled from "styled-components";
-import { choseQuiz } from "../../slices/gameSlice";
 
 const List = styled.ul`
     margin: 2.5rem 0 0 0;

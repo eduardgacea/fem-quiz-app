@@ -10,7 +10,7 @@ export enum Status {
 
 export type GameState = {
     status: Status;
-    currentQuiz: QuizId | undefined;
-    currentQuestion: QuestionId | undefined;
+    currentQuizId: QuizId | undefined;
+    currentQuestionId: QuestionId | undefined;
     score: number | undefined;
 };
