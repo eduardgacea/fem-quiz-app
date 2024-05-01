@@ -5,6 +5,7 @@ import { RootState } from "../../redux/store";
 
 import Option from "../../ui/Option";
 import Button from "../../ui/Button";
+import Error from "../../ui/Error";
 
 import styled from "styled-components";
 
@@ -29,6 +30,7 @@ function OptionsList() {
     const currentQuestionIndex = useSelector((state: RootState) => state.game.currentQuestionIndex)!;
     const status = useSelector((state: RootState) => state.game.status);
     const quiz = useSelector((state: RootState) => state.game.quiz);
+    const errorMessage = useSelector((state: RootState) => state.game.errorMessage);
     const options = quiz.questions[currentQuestionIndex].options;
 
     const dispatch = useDispatch();
@@ -52,6 +54,7 @@ function OptionsList() {
             </StyledOptionsList>
             {status === Status.Active && <Button onClick={handleSubmit}>Submit Answer</Button>}
             {status === Status.Submitting && <Button onClick={handleNextQuestion}>Next Question</Button>}
+            {errorMessage.length > 0 && <Error />}
         </div>
     );
 }

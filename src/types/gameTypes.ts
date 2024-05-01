@@ -26,5 +26,5 @@ export type GameState = {
     currentQuestionIndex: number;
     selectedOption: string;
     score: number;
-    error: string;
+    errorMessage: string;
 };

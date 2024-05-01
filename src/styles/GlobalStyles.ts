@@ -47,6 +47,7 @@ const GlobalStyles = createGlobalStyle`
     --f-mobile-option-icon: normal normal 500 1.125rem/100% var(--ff-primary);    
 
     --f-button: normal normal 500 1.125rem/100% var(--ff-primary);
+    --f-error: normal normal 400 1.125rem/100% var(--ff-primary);
     }
 
     * {

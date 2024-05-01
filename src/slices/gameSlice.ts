@@ -13,7 +13,7 @@ const initialState: GameState = {
     currentQuestionIndex: 0,
     selectedOption: "",
     score: 0,
-    error: "",
+    errorMessage: "",
 };
 
 export const gameSlice = createSlice({
@@ -28,11 +28,11 @@ export const gameSlice = createSlice({
         },
         selectOption: (state, action) => {
             state.selectedOption = action.payload;
-            state.error = "";
+            state.errorMessage = "";
         },
         submitOption: state => {
             if (!state.selectedOption) {
-                state.error = "Please select an answer";
+                state.errorMessage = "Please select an answer";
             } else {
                 state.status = Status.Submitting;
                 const currentQuestion = state.quiz.questions[state.currentQuestionIndex];
@@ -46,6 +46,7 @@ export const gameSlice = createSlice({
             } else {
                 // else if there are more questions left
                 state.status = Status.Active;
+                state.selectedOption = "";
                 state.currentQuestionIndex = state.currentQuestionIndex + 1;
             }
         },
