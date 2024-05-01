@@ -20,10 +20,7 @@ const GlobalStyles = createGlobalStyle`
     /* dark theme */
     --clr-dt-700: #626c7f;
     --clr-dt-600: #3b4d66;
-    --clr-dt-300: #313e51;
-    /* shadows */
-    --lt-shadow: 0 16px 40px 0 rgba(143, 160, 193, 14%);
-    --dt-shadow: 0 16px 40px 0 rgba(49, 62, 81, 14%);
+    --clr-dt-300: #313e51;    
     /* icons */
     --i-size: 1.78125rem;
     ${colorMap}

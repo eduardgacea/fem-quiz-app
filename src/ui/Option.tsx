@@ -1,4 +1,5 @@
 import { Theme } from "../types/themeTypes";
+import { Status } from "../types/gameTypes";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 
@@ -18,6 +19,8 @@ type MainContainerProps = {
     $theme: Theme;
     $isTransparent: boolean;
     $isSelected: boolean;
+    $highlightCorrect: boolean;
+    $highlightWrong: boolean;
 };
 
 type IconContainerProps = {
@@ -25,12 +28,14 @@ type IconContainerProps = {
     $backgroundColor: string | undefined;
     $type: OptionType;
     $isSelected: boolean;
+    $highlightCorrect: boolean;
+    $highlightWrong: boolean;
 };
 
 const MainContainer = styled.li<MainContainerProps>`
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
     border-radius: 0.75rem;
     cursor: pointer;
 
@@ -43,17 +48,22 @@ const MainContainer = styled.li<MainContainerProps>`
 
     box-shadow: ${props => {
         if (props.$isTransparent) return "none";
-        if (props.$theme === "light") {
-            return props.$isSelected ? "inset 0 0 0 3px var(--clr-accent), var(--lt-shadow)" : "var(--lt-shadow)";
-        } else {
-            return props.$isSelected ? "inset 0 0 0 3px var(--clr-accent), var(--dt-shadow)" : "var(--dt-shadow)";
-        }
+        return props.$isSelected ? "inset 0 0 0 3px var(--clr-accent), var(--shadow)" : "var(--shadow)";
     }};
+
+    ${props => props.$highlightCorrect && "box-shadow: inset 0 0 0 3px var(--clr-correct), var(--shadow)"};
+    ${props => props.$highlightWrong && "box-shadow: inset 0 0 0 3px var(--clr-wrong), var(--shadow)"};
 
     h2 {
         font: var(--f-body-m);
         color: ${props => (props.$theme === "light" ? "var(--clr-dt-300)" : "var(--clr-lt-700)")};
     }
+`;
+
+const ContentWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 `;
 
 const IconContainer = styled.div<IconContainerProps>`
@@ -65,11 +75,15 @@ const IconContainer = styled.div<IconContainerProps>`
     justify-content: center;
     align-items: center;
     font: var(--f-mobile-option-icon);
+    border-radius: 0.375rem;
+
     background-color: ${props => (props.$backgroundColor ? props.$backgroundColor : "var(--clr-lt-600)")};
     ${props => props.$isSelected && "background-color: var(--clr-accent)"};
+    ${props => props.$highlightCorrect && "background-color: var(--clr-correct)"};
+    ${props => props.$highlightWrong && "background-color: var(--clr-wrong)"};
+
     color: ${props => (props.$type === "subject" ? "" : "var(--clr-dt-700)")};
     ${props => props.$isSelected && "color: var(--clr-white)"};
-    border-radius: 0.375rem;
 
     & > img {
         width: var(--i-size);
@@ -79,23 +93,54 @@ const IconContainer = styled.div<IconContainerProps>`
 function Option({ children, type, icon, isTransparent = false, onClick }: OptionProps) {
     const theme = useSelector((state: RootState) => state.theme.value);
     const selectedOption = useSelector((state: RootState) => state.game.selectedOption);
+    const status = useSelector((state: RootState) => state.game.status);
+    const answer = useSelector(
+        (state: RootState) => state.game.quiz.questions[state.game.currentQuestionIndex]?.answer
+    );
 
     const backgroundColor = type === "subject" ? `var(--clr-${children.toLowerCase()})` : undefined;
 
+    const isCorrect = children === answer;
     const isSelected = selectedOption === children;
+
+    const showSuccessIcon = isCorrect && status === Status.Submitting;
+
+    const highlightCorrect = isCorrect && isSelected && status === Status.Submitting;
+    const highlightWrong = !isCorrect && isSelected && status === Status.Submitting;
 
     return (
         <MainContainer
             $theme={theme}
             $isTransparent={isTransparent}
             $isSelected={isSelected}
+            $highlightCorrect={highlightCorrect}
+            $highlightWrong={highlightWrong}
             onClick={onClick}
             as={isTransparent ? "div" : "li"}
         >
-            <IconContainer $theme={theme} $backgroundColor={backgroundColor} $type={type} $isSelected={isSelected}>
-                {type === "subject" ? <img src={icon} alt="quiz name" /> : icon}
-            </IconContainer>
-            <h2>{children}</h2>
+            <ContentWrapper>
+                <IconContainer
+                    $theme={theme}
+                    $backgroundColor={backgroundColor}
+                    $type={type}
+                    $isSelected={isSelected}
+                    $highlightCorrect={highlightCorrect}
+                    $highlightWrong={highlightWrong}
+                >
+                    {type === "subject" ? <img src={icon} alt="quiz name" /> : icon}
+                </IconContainer>
+                <h2>{children}</h2>
+            </ContentWrapper>
+            {showSuccessIcon && (
+                <div>
+                    <img src="icon-correct.svg" />
+                </div>
+            )}
+            {highlightWrong && (
+                <div>
+                    <img src="icon-incorrect.svg" />
+                </div>
+            )}
         </MainContainer>
     );
 }

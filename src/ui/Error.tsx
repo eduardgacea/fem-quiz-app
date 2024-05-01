@@ -22,7 +22,6 @@ const ErrorWrapper = styled.div`
 `;
 
 const ErrorMessage = styled.span<ErrorMessageProps>`
-    color: var(--clr-wrong);
     color: ${props => (props.$theme === "light" ? "var(--clr-wrong)" : "var(--clr-white)")};
     font: var(--f-error);
 `;
