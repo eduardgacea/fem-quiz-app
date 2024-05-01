@@ -7,7 +7,7 @@ type MainContainerProps = {
 const StyledMainContainer = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 2rem 1.5rem 0 1.5rem;
+    padding: 2rem 1.5rem 1rem 1.5rem;
     justify-content: space-between;
     height: 100dvh;
 `;

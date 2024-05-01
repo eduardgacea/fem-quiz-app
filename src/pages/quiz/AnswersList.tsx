@@ -1,5 +1,7 @@
+import Button from "../../ui/Button";
+
 function AnswersList() {
-    return <div>AnswersList</div>;
+    return <Button>Submit Answer</Button>;
 }
 
 export default AnswersList;
