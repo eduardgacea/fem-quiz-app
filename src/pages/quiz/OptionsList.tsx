@@ -34,7 +34,10 @@ function OptionsList() {
     const options = quiz.questions[currentQuestionIndex].options;
 
     const dispatch = useDispatch();
-    const handleSelectOption = (option: string) => dispatch(selectOption(option));
+    const handleSelectOption = (option: string) => {
+        if (status === Status.Submitting) return;
+        dispatch(selectOption(option));
+    };
     const handleSubmit = () => dispatch(submitOption());
     const handleNextQuestion = () => dispatch(nextQuestion());
 
