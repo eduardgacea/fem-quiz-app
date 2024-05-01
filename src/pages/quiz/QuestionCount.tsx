@@ -15,7 +15,7 @@ const Count = styled.p<CountProps>`
 
 function QuestionCount() {
     const theme = useSelector((state: RootState) => state.theme.value);
-    const quizLength = useSelector((state: RootState) => state.game.quiz.questions)!.length;
+    const quizLength = useSelector((state: RootState) => state.game.quiz.questions.length);
     const currentQuestionNumber = useSelector((state: RootState) => state.game.currentQuestionIndex)! + 1;
 
     return (
