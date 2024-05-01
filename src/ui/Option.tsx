@@ -17,12 +17,14 @@ type OptionProps = {
 type MainContainerProps = {
     $theme: Theme;
     $isTransparent: boolean;
+    $isSelected: boolean;
 };
 
 type IconContainerProps = {
     $theme: Theme;
     $backgroundColor: string | undefined;
     $type: OptionType;
+    $isSelected: boolean;
 };
 
 const MainContainer = styled.li<MainContainerProps>`
@@ -41,7 +43,11 @@ const MainContainer = styled.li<MainContainerProps>`
 
     box-shadow: ${props => {
         if (props.$isTransparent) return "none";
-        else return props.$theme === "light" ? "var(--lt-shadow)" : "var(--dt-shadow)";
+        if (props.$theme === "light") {
+            return props.$isSelected ? "inset 0 0 0 3px var(--clr-accent), var(--lt-shadow)" : "var(--lt-shadow)";
+        } else {
+            return props.$isSelected ? "inset 0 0 0 3px var(--clr-accent), var(--dt-shadow)" : "var(--dt-shadow)";
+        }
     }};
 
     h2 {
@@ -53,12 +59,16 @@ const MainContainer = styled.li<MainContainerProps>`
 const IconContainer = styled.div<IconContainerProps>`
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     font: var(--f-mobile-option-icon);
     background-color: ${props => (props.$backgroundColor ? props.$backgroundColor : "var(--clr-lt-600)")};
+    ${props => props.$isSelected && "background-color: var(--clr-accent)"};
     color: ${props => (props.$type === "subject" ? "" : "var(--clr-dt-700)")};
+    ${props => props.$isSelected && "color: var(--clr-white)"};
     border-radius: 0.375rem;
 
     & > img {
@@ -68,17 +78,21 @@ const IconContainer = styled.div<IconContainerProps>`
 
 function Option({ children, type, icon, isTransparent = false, onClick }: OptionProps) {
     const theme = useSelector((state: RootState) => state.theme.value);
+    const selectedOption = useSelector((state: RootState) => state.game.selectedOption);
 
     const backgroundColor = type === "subject" ? `var(--clr-${children.toLowerCase()})` : undefined;
+
+    const isSelected = selectedOption === children;
 
     return (
         <MainContainer
             $theme={theme}
             $isTransparent={isTransparent}
+            $isSelected={isSelected}
             onClick={onClick}
             as={isTransparent ? "div" : "li"}
         >
-            <IconContainer $theme={theme} $backgroundColor={backgroundColor} $type={type}>
+            <IconContainer $theme={theme} $backgroundColor={backgroundColor} $type={type} $isSelected={isSelected}>
                 {type === "subject" ? <img src={icon} alt="quiz name" /> : icon}
             </IconContainer>
             <h2>{children}</h2>

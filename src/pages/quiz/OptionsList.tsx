@@ -1,5 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { selectOption } from "../../slices/gameSlice";
 import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
 
 import Option from "../../ui/Option";
 import Button from "../../ui/Button";
@@ -24,16 +25,24 @@ const StyledOptionsList = styled.ol`
 `;
 
 function OptionsList() {
+    const dispatch = useDispatch();
     const quiz = useSelector((state: RootState) => state.game.quiz);
     const currentQuestionIndex = useSelector((state: RootState) => state.game.currentQuestionIndex)!;
 
     const options = quiz.questions[currentQuestionIndex].options;
 
+    const handleSelectOption = (option: string) => dispatch(selectOption(option));
+
     return (
         <div>
             <StyledOptionsList>
                 {options.map((option, index) => (
-                    <Option key={index} type="option" icon={IndexToLetterMap.get(index)!}>
+                    <Option
+                        key={index}
+                        type="option"
+                        icon={IndexToLetterMap.get(index)!}
+                        onClick={() => handleSelectOption(option)}
+                    >
                         {option}
                     </Option>
                 ))}

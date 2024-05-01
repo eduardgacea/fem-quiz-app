@@ -11,6 +11,7 @@ const initialState: GameState = {
         questions: [],
     },
     currentQuestionIndex: undefined,
+    selectedOption: undefined,
     score: undefined,
 };
 
@@ -24,9 +25,12 @@ export const gameSlice = createSlice({
             state.currentQuestionIndex = 0;
             state.score = 0;
         },
+        selectOption: (state, action) => {
+            state.selectedOption = action.payload;
+        },
     },
 });
 
-export const { choseQuiz } = gameSlice.actions;
+export const { choseQuiz, selectOption } = gameSlice.actions;
 
 export default gameSlice.reducer;

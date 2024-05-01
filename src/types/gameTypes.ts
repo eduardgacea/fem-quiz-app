@@ -24,5 +24,6 @@ export type GameState = {
     status: Status;
     quiz: Quiz;
     currentQuestionIndex: number | undefined;
+    selectedOption: string | undefined;
     score: number | undefined;
 };
