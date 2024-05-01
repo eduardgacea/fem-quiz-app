@@ -14,7 +14,7 @@ const ContentWrapper = styled.div``;
 
 function HomePage() {
     return (
-        <MainContainer>
+        <MainContainer style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <ContentWrapper>
                 <HomePageTitle />
                 <SubjectList />

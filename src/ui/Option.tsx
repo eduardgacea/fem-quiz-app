@@ -28,13 +28,17 @@ type IconContainerProps = {
 const MainContainer = styled.li<MainContainerProps>`
     display: flex;
     align-items: center;
+    gap: 1rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+
     background-color: ${props => {
         if (props.$isTransparent) return "transparent";
         else return props.$theme === "light" ? "var(--clr-white)" : "var(--clr-dt-600)";
     }};
-    gap: 1rem;
+
     padding: ${props => (props.$isTransparent ? "0" : "0.75rem")};
-    border-radius: 0.75rem;
+
     box-shadow: ${props => {
         if (props.$isTransparent) return "none";
         else return props.$theme === "light" ? "var(--lt-shadow)" : "var(--dt-shadow)";
