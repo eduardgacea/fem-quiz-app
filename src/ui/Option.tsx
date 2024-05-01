@@ -4,21 +4,25 @@ import { useSelector } from "react-redux";
 
 import styled from "styled-components";
 
+type OptionType = "subject" | "option";
+
 type OptionProps = {
     children: string;
-    type: "subject" | "answer";
+    type: OptionType;
     icon: string;
     isTransparent?: boolean;
     onClick?: (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
-type IconContainerProps = {
-    $backgroundColor: string;
-};
-
 type MainContainerProps = {
     $theme: Theme;
     $isTransparent: boolean;
+};
+
+type IconContainerProps = {
+    $theme: Theme;
+    $backgroundColor: string | undefined;
+    $type: OptionType;
 };
 
 const MainContainer = styled.li<MainContainerProps>`
@@ -48,7 +52,9 @@ const IconContainer = styled.div<IconContainerProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${props => props.$backgroundColor};
+    font: var(--f-mobile-option-icon);
+    background-color: ${props => (props.$backgroundColor ? props.$backgroundColor : "var(--clr-lt-600)")};
+    color: ${props => (props.$type === "subject" ? "" : "var(--clr-dt-700)")};
     border-radius: 0.375rem;
 
     & > img {
@@ -59,7 +65,7 @@ const IconContainer = styled.div<IconContainerProps>`
 function Option({ children, type, icon, isTransparent = false, onClick }: OptionProps) {
     const theme = useSelector((state: RootState) => state.theme.value);
 
-    const backgroundColor = `var(--clr-${children.toLowerCase()})`;
+    const backgroundColor = type === "subject" ? `var(--clr-${children.toLowerCase()})` : undefined;
 
     return (
         <MainContainer
@@ -68,7 +74,7 @@ function Option({ children, type, icon, isTransparent = false, onClick }: Option
             onClick={onClick}
             as={isTransparent ? "div" : "li"}
         >
-            <IconContainer $backgroundColor={backgroundColor}>
+            <IconContainer $theme={theme} $backgroundColor={backgroundColor} $type={type}>
                 {type === "subject" ? <img src={icon} alt="quiz name" /> : icon}
             </IconContainer>
             <h2>{children}</h2>

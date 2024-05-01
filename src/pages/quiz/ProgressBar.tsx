@@ -18,12 +18,14 @@ const Container = styled.div<ContainerProps>`
     height: 1rem;
     border-radius: 999px;
     padding: 0.25rem;
+    margin-bottom: 2.5rem;
 `;
 
 const Fill = styled.div<FillProps>`
     width: ${props => props.$percentage}%;
     background-color: var(--clr-accent);
     height: 100%;
+    min-height: 0.5rem;
     border-radius: 999px;
 `;
 

@@ -11,7 +11,7 @@ type QuestionProps = {
 const Question = styled.h1<QuestionProps>`
     font: var(--f-mobile-question);
     color: ${props => (props.$theme === "light" ? "var(--clr-dt-300)" : "var(--clr-lt-700)")};
-    margin-top: 0.75rem;
+    margin: 0.75rem 0 1.5rem 0;
 `;
 
 function QuizQuestion() {

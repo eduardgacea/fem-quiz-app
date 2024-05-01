@@ -44,7 +44,8 @@ const GlobalStyles = createGlobalStyle`
     --f-mobile-heading-l-medium: normal normal 500 2.5rem/100% var(--ff-primary);
     --f-mobile-heading-m-regular-italic: italic normal 400 0.875rem/150% var(--ff-primary);
     --f-mobile-question: normal normal 500 1.25rem/120% var(--ff-primary);
-        
+    --f-mobile-option-icon: normal normal 500 1.125rem/100% var(--ff-primary);    
+
     --f-button: normal normal 500 1.125rem/100% var(--ff-primary);
     }
 
@@ -59,13 +60,15 @@ const GlobalStyles = createGlobalStyle`
     h3,
     h4,
     h5,
-    h6{
+    h6,
+    p{
         margin: 0;
         padding: 0;
     }
 
     body {
         background: var(--clr-lt-300);
+        overflow-y: auto;
     }
 
     .body-light {
