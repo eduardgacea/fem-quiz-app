@@ -6,13 +6,14 @@ const initialState: GameState = {
     status: Status.Idle,
     quiz: {
         id: undefined,
-        title: undefined,
-        icon: undefined,
+        title: "",
+        icon: "",
         questions: [],
     },
-    currentQuestionIndex: undefined,
-    selectedOption: undefined,
-    score: undefined,
+    currentQuestionIndex: 0,
+    selectedOption: "",
+    score: 0,
+    error: "",
 };
 
 export const gameSlice = createSlice({
@@ -27,10 +28,31 @@ export const gameSlice = createSlice({
         },
         selectOption: (state, action) => {
             state.selectedOption = action.payload;
+            state.error = "";
         },
+        submitOption: state => {
+            if (!state.selectedOption) {
+                state.error = "Please select an answer";
+            } else {
+                state.status = Status.Submitting;
+                const currentQuestion = state.quiz.questions[state.currentQuestionIndex];
+                if (state.selectedOption === currentQuestion.answer) state.score = state.score + 1;
+            }
+        },
+        nextQuestion: state => {
+            if (state.currentQuestionIndex >= state.quiz.questions.length - 1) {
+                // if we are at the last question
+                state.status = Status.Finished;
+            } else {
+                // else if there are more questions left
+                state.status = Status.Active;
+                state.currentQuestionIndex = state.currentQuestionIndex + 1;
+            }
+        },
+        newGame: () => initialState,
     },
 });
 
-export const { choseQuiz, selectOption } = gameSlice.actions;
+export const { choseQuiz, selectOption, submitOption, nextQuestion, newGame } = gameSlice.actions;
 
 export default gameSlice.reducer;

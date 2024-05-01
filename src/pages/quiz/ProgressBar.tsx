@@ -34,7 +34,7 @@ function ProgressBar() {
     const max = useSelector((state: RootState) => state.game.quiz.questions.length);
     const now = useSelector((state: RootState) => state.game.currentQuestionIndex)! + 1;
 
-    const percentage = Math.floor((now * 100) / max);
+    const percentage = Math.floor(((now - 1) * 100) / max);
 
     return (
         <Container $theme={theme}>

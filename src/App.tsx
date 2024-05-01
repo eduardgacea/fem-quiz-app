@@ -22,6 +22,7 @@ function App() {
             <Backdrop />
             {gameStatus === Status.Idle && <HomePage />}
             {gameStatus === Status.Active && <QuizPage />}
+            {gameStatus === Status.Submitting && <QuizPage />}
         </>
     );
 }

@@ -1,5 +1,6 @@
+import { nextQuestion, selectOption, submitOption } from "../../slices/gameSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectOption } from "../../slices/gameSlice";
+import { Status } from "../../types/gameTypes";
 import { RootState } from "../../redux/store";
 
 import Option from "../../ui/Option";
@@ -25,13 +26,15 @@ const StyledOptionsList = styled.ol`
 `;
 
 function OptionsList() {
-    const dispatch = useDispatch();
-    const quiz = useSelector((state: RootState) => state.game.quiz);
     const currentQuestionIndex = useSelector((state: RootState) => state.game.currentQuestionIndex)!;
-
+    const status = useSelector((state: RootState) => state.game.status);
+    const quiz = useSelector((state: RootState) => state.game.quiz);
     const options = quiz.questions[currentQuestionIndex].options;
 
+    const dispatch = useDispatch();
     const handleSelectOption = (option: string) => dispatch(selectOption(option));
+    const handleSubmit = () => dispatch(submitOption());
+    const handleNextQuestion = () => dispatch(nextQuestion());
 
     return (
         <div>
@@ -47,7 +50,8 @@ function OptionsList() {
                     </Option>
                 ))}
             </StyledOptionsList>
-            <Button>Submit Answer</Button>
+            {status === Status.Active && <Button onClick={handleSubmit}>Submit Answer</Button>}
+            {status === Status.Submitting && <Button onClick={handleNextQuestion}>Next Question</Button>}
         </div>
     );
 }

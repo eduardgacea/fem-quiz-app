@@ -10,8 +10,8 @@ export enum Status {
 
 export type Quiz = {
     id: number | undefined;
-    title: string | undefined;
-    icon: string | undefined;
+    title: string;
+    icon: string;
     questions: {
         id: number;
         question: string;
@@ -23,7 +23,8 @@ export type Quiz = {
 export type GameState = {
     status: Status;
     quiz: Quiz;
-    currentQuestionIndex: number | undefined;
-    selectedOption: string | undefined;
-    score: number | undefined;
+    currentQuestionIndex: number;
+    selectedOption: string;
+    score: number;
+    error: string;
 };
