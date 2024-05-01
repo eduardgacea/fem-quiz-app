@@ -1,7 +1,12 @@
-import { useSelector } from "react-redux";
+import { Theme } from "../types/themeTypes";
 import { RootState } from "../redux/store";
+import { useSelector } from "react-redux";
 
 import styled from "styled-components";
+
+type ErrorMessageProps = {
+    $theme: Theme;
+};
 
 const ErrorWrapper = styled.div`
     display: flex;
@@ -16,12 +21,14 @@ const ErrorWrapper = styled.div`
     }
 `;
 
-const ErrorMessage = styled.span`
+const ErrorMessage = styled.span<ErrorMessageProps>`
     color: var(--clr-wrong);
+    color: ${props => (props.$theme === "light" ? "var(--clr-wrong)" : "var(--clr-white)")};
     font: var(--f-error);
 `;
 
 function Error() {
+    const theme = useSelector((state: RootState) => state.theme.value);
     const errorMessage = useSelector((state: RootState) => state.game.errorMessage);
 
     return (
@@ -29,7 +36,7 @@ function Error() {
             <div>
                 <img src="icon-error.svg" />
             </div>
-            <ErrorMessage>{errorMessage}</ErrorMessage>
+            <ErrorMessage $theme={theme}>{errorMessage}</ErrorMessage>
         </ErrorWrapper>
     );
 }
