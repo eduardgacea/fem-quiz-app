@@ -2,8 +2,8 @@ import { Status } from "./types/gameTypes";
 import { RootState } from "./redux/store";
 import { useSelector } from "react-redux";
 
-import ResizeListener from "./components/ResizeListener";
-import ThemeListener from "./components/ThemeListener";
+import ResizeListener from "./listeners/ResizeListener";
+import ThemeListener from "./listeners/ThemeListener";
 import GlobalStyles from "./styles/GlobalStyles";
 import QuizPage from "./pages/quiz/QuizPage";
 import HomePage from "./pages/home/HomePage";
