@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import ResizeListener from "./listeners/ResizeListener";
 import ThemeListener from "./listeners/ThemeListener";
+import FinishPage from "./pages/finish/FinishPage";
 import GlobalStyles from "./styles/GlobalStyles";
 import QuizPage from "./pages/quiz/QuizPage";
 import HomePage from "./pages/home/HomePage";
@@ -21,8 +22,8 @@ function App() {
             <ThemeListener />
             <Backdrop />
             {gameStatus === Status.Idle && <HomePage />}
-            {gameStatus === Status.Active && <QuizPage />}
-            {gameStatus === Status.Submitting && <QuizPage />}
+            {(gameStatus === Status.Active || gameStatus === Status.Submitting) && <QuizPage />}
+            {gameStatus === Status.Finished && <FinishPage />}
         </>
     );
 }
