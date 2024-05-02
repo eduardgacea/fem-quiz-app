@@ -27,7 +27,7 @@ const Header = styled.header<HeaderProps>`
         }
     }
 
-    h3 {
+    h2 {
         font: var(--f-mobile-heading-m-regular-italic);
         color: ${props => (props.$theme === "light" ? "var(--clr-dt-600)" : "var(--clr-lt-300)")};
     }
@@ -45,7 +45,7 @@ const Header = styled.header<HeaderProps>`
             font: var(--f-heading-l-medium);
         }
 
-        & h3 {
+        & h2 {
             font: var(--f-body-s);
         }
     }
