@@ -55,7 +55,7 @@ const MainContainer = styled.li<MainContainerProps>`
     ${props => props.$highlightWrong && "box-shadow: inset 0 0 0 3px var(--clr-wrong), var(--shadow)"};
 
     h2 {
-        font: var(--f-body-m);
+        font: var(--f-mobile-option);
         color: ${props => (props.$theme === "light" ? "var(--clr-dt-300)" : "var(--clr-lt-700)")};
     }
 `;

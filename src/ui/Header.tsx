@@ -1,4 +1,3 @@
-import { quizzes } from "../data/data.json";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 
@@ -14,8 +13,7 @@ const StyledHeader = styled.header`
 `;
 
 function Header() {
-    const currentQuizId = useSelector((state: RootState) => state.game.quiz.id);
-    const currentQuiz = quizzes.find(quiz => quiz.id === currentQuizId)!;
+    const currentQuiz = useSelector((state: RootState) => state.game.quiz);
 
     return (
         <StyledHeader>

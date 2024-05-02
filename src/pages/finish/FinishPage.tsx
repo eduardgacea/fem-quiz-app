@@ -1,7 +1,7 @@
 import MainContainer from "../../ui/MainContainer";
-import Header from "../../ui/Header";
 import FinishPageTitle from "./FinishPageTitle";
-import ScoreCard from "./ScoreCard";
+import Header from "../../ui/Header";
+import Score from "./Score";
 
 function FinishPage() {
     return (
@@ -9,7 +9,7 @@ function FinishPage() {
             <Header />
             <div>
                 <FinishPageTitle />
-                <ScoreCard />
+                <Score />
             </div>
         </MainContainer>
     );
