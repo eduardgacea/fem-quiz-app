@@ -1,4 +1,4 @@
-import { TABLET_BREAKPOINT } from "../config/config";
+import { DESKTOP_BREAKPOINT, TABLET_BREAKPOINT } from "../config/config";
 import { Theme } from "../types/themeTypes";
 import { Status } from "../types/gameTypes";
 import { RootState } from "../redux/store";
@@ -67,12 +67,20 @@ const MainContainer = styled.li<MainContainerProps>`
             font: var(--f-tablet-option);
         }
     }
+
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        padding: ${props => (props.$isTransparent ? "0" : "1.25rem")};
+    }
 `;
 
 const ContentWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        gap: 2rem;
+    }
 `;
 
 const IconContainer = styled.div<IconContainerProps>`
@@ -111,6 +119,10 @@ const IconContainer = styled.div<IconContainerProps>`
         & > img {
             width: var(--i-size-tablet);
         }
+    }
+
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        border-radius: 0.5rem;
     }
 `;
 
