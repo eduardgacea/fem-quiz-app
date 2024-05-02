@@ -55,13 +55,13 @@ function ThemeToggle() {
     return (
         <Container>
             <div>
-                <img src={`icon-sun-${iconTheme}.svg`} />
+                <img src={`icon-sun-${iconTheme}.svg`} alt="light theme" />
             </div>
             <StyledSwitch>
                 <Form.Switch type="switch" onClick={handleToggle} />
             </StyledSwitch>
             <div>
-                <img src={`icon-moon-${iconTheme}.svg`} />
+                <img src={`icon-moon-${iconTheme}.svg`} alt="dark theme" />
             </div>
         </Container>
     );

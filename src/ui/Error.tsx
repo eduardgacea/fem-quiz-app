@@ -33,7 +33,7 @@ function Error() {
     return (
         <ErrorWrapper>
             <div>
-                <img src="icon-error.svg" />
+                <img src="icon-error.svg" alt="error icon" />
             </div>
             <ErrorMessage $theme={theme}>{errorMessage}</ErrorMessage>
         </ErrorWrapper>

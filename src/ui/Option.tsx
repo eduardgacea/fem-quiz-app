@@ -157,12 +157,12 @@ function Option({ children, type, icon, isTransparent = false, onClick }: Option
             </ContentWrapper>
             {showSuccessIcon && (
                 <div>
-                    <img src="icon-correct.svg" />
+                    <img src="icon-correct.svg" alt="correct answer" />
                 </div>
             )}
             {highlightWrong && (
                 <div>
-                    <img src="icon-incorrect.svg" />
+                    <img src="icon-incorrect.svg" alt="wrong answer" />
                 </div>
             )}
         </MainContainer>

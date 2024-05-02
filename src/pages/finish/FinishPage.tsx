@@ -7,7 +7,7 @@ import Score from "./Score";
 
 import styled from "styled-components";
 
-const DesktopLayout = styled.div`
+const DesktopLayout = styled.main`
     @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
         display: flex;
         gap: 8rem;

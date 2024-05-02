@@ -20,7 +20,7 @@ const ThemeToggleWrapper = styled.div<ThemeToggleWrapperProps>`
     ${props => props.$device === Device.Mobile && "margin-top: 1.4375rem"};
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.main`
     @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
         display: flex;
         gap: 8rem;

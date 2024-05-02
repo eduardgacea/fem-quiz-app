@@ -46,7 +46,7 @@ function ProgressBar() {
     const percentage = Math.floor(((now - 1) * 100) / max);
 
     return (
-        <Container $theme={theme}>
+        <Container $theme={theme} role="progressbar">
             <Fill $percentage={percentage}></Fill>
         </Container>
     );
