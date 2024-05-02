@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { TABLET_BREAKPOINT } from "../config/config";
+import { DESKTOP_BREAKPOINT, TABLET_BREAKPOINT } from "../config/config";
 import { toggleTheme } from "../slices/themeSlice";
 import { RootState } from "../redux/store";
 import { Form } from "react-bootstrap";
@@ -39,6 +39,10 @@ const StyledSwitch = styled(Form)`
         & .form-check-input {
             height: 1.75rem;
         }
+    }
+
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        margin: 2rem 0;
     }
 `;
 

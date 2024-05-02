@@ -14,7 +14,7 @@ function Backdrop() {
     const theme = useSelector((state: RootState) => state.theme.value);
 
     return (
-        <BackdropContainer>
+        <BackdropContainer role="banner">
             <img src={`pattern-background-${device}-${theme}.svg`} alt="backdrop" />
         </BackdropContainer>
     );

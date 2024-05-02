@@ -1,5 +1,5 @@
 import { nextQuestion, selectOption, submitOption } from "../../slices/gameSlice";
-import { TABLET_BREAKPOINT } from "../../config/config";
+import { DESKTOP_BREAKPOINT, TABLET_BREAKPOINT } from "../../config/config";
 import { useDispatch, useSelector } from "react-redux";
 import { Status } from "../../types/gameTypes";
 import { RootState } from "../../redux/store";
@@ -18,6 +18,12 @@ const IndexToLetterMap = new Map([
     [4, "E"],
     [5, "F"],
 ]);
+
+const OptionsListWrapper = styled.div`
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        flex-grow: 1;
+    }
+`;
 
 const StyledOptionsList = styled.ol`
     display: flex;
@@ -48,7 +54,7 @@ function OptionsList() {
     const handleNextQuestion = () => dispatch(nextQuestion());
 
     return (
-        <div>
+        <OptionsListWrapper>
             <StyledOptionsList>
                 {options.map((option, index) => (
                     <Option
@@ -64,7 +70,7 @@ function OptionsList() {
             {status === Status.Active && <Button onClick={handleSubmit}>Submit Answer</Button>}
             {status === Status.Submitting && <Button onClick={handleNextQuestion}>Next Question</Button>}
             {errorMessage.length > 0 && <Error />}
-        </div>
+        </OptionsListWrapper>
     );
 }
 

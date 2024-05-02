@@ -1,4 +1,4 @@
-import { TABLET_BREAKPOINT } from "../../config/config";
+import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from "../../config/config";
 import { useDispatch, useSelector } from "react-redux";
 import { newGame } from "../../slices/gameSlice";
 import { Theme } from "../../types/themeTypes";
@@ -18,6 +18,11 @@ const ScoreCardWrapper = styled.div`
 
     @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
         margin-top: 4rem;
+    }
+
+    @media screen and (min-width: ${MOBILE_BREAKPOINT}px) {
+        margin-top: 0;
+        flex-grow: 1;
     }
 `;
 

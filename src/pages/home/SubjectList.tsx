@@ -1,3 +1,4 @@
+import { DESKTOP_BREAKPOINT, TABLET_BREAKPOINT } from "../../config/config";
 import { choseQuiz } from "../../slices/gameSlice";
 import { quizzes } from "../../data/data.json";
 import { useDispatch } from "react-redux";
@@ -5,7 +6,6 @@ import { useDispatch } from "react-redux";
 import Option from "../../ui/Option";
 
 import styled from "styled-components";
-import { TABLET_BREAKPOINT } from "../../config/config";
 
 const List = styled.ul`
     margin: 2.5rem 0 0 0;
@@ -18,6 +18,13 @@ const List = styled.ul`
         & {
             margin-top: 4rem;
             gap: 1.5rem;
+        }
+    }
+
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        & {
+            margin-top: 0;
+            flex-grow: 1;
         }
     }
 `;

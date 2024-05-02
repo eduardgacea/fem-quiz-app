@@ -1,4 +1,4 @@
-import { TABLET_BREAKPOINT } from "../../config/config";
+import { DESKTOP_BREAKPOINT, TABLET_BREAKPOINT } from "../../config/config";
 import { Theme } from "../../types/themeTypes";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
@@ -23,6 +23,10 @@ const Container = styled.div<ContainerProps>`
 
     @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
         margin-bottom: 4rem;
+    }
+
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        margin-bottom: 7rem;
     }
 `;
 

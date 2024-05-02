@@ -1,3 +1,4 @@
+import { DESKTOP_BREAKPOINT, TABLET_BREAKPOINT } from "../config/config";
 import { parseCustomStyle } from "../utils/parseCustomStyle";
 import { Device } from "../types/deviceTypes";
 import { RootState } from "../redux/store";
@@ -5,7 +6,6 @@ import { useSelector } from "react-redux";
 
 import styled from "styled-components";
 import React from "react";
-import { TABLET_BREAKPOINT } from "../config/config";
 
 type MainContainerProps = {
     children: React.ReactNode;
@@ -28,6 +28,15 @@ const StyledMainContainer = styled.div<StyledMainContainerProps>`
     @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
         max-width: 640px;
         padding: 2rem 0 1rem 0;
+    }
+
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        height: 75dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        max-width: 1160px;
+        padding: 0;
     }
 `;
 

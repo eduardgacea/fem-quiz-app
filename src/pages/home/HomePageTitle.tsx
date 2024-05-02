@@ -1,4 +1,4 @@
-import { TABLET_BREAKPOINT } from "../../config/config";
+import { DESKTOP_BREAKPOINT, TABLET_BREAKPOINT } from "../../config/config";
 import { Theme } from "../../types/themeTypes";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
@@ -47,6 +47,16 @@ const Header = styled.header<HeaderProps>`
 
         & h3 {
             font: var(--f-body-s);
+        }
+    }
+
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        & {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin-bottom: 3rem;
         }
     }
 `;

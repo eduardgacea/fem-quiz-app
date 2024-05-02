@@ -8,6 +8,7 @@ import HomePageTitle from "./HomePageTitle";
 import SubjectList from "./SubjectList";
 
 import styled from "styled-components";
+import { DESKTOP_BREAKPOINT } from "../../config/config";
 
 type ThemeToggleWrapperProps = {
     $device: Device;
@@ -19,7 +20,12 @@ const ThemeToggleWrapper = styled.div<ThemeToggleWrapperProps>`
     ${props => props.$device === Device.Mobile && "margin-top: 1.4375rem"};
 `;
 
-const ContentWrapper = styled.div``;
+const ContentWrapper = styled.div`
+    @media screen and (min-width: ${DESKTOP_BREAKPOINT}px) {
+        display: flex;
+        gap: 8rem;
+    }
+`;
 
 const mobileStyles: React.CSSProperties = {
     display: "flex",
