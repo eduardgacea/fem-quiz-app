@@ -1,3 +1,4 @@
+import { TABLET_BREAKPOINT } from "../../config/config";
 import { Theme } from "../../types/themeTypes";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
@@ -17,6 +18,16 @@ const Title = styled.h1<TitleProps>`
 
     & :last-child {
         font: var(--f-mobile-heading-l-medium);
+    }
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        :first-child {
+            font: var(--f-heading-l-light);
+        }
+
+        :last-child {
+            font: var(--f-heading-l-medium);
+        }
     }
 `;
 

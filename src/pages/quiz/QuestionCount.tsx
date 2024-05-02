@@ -1,3 +1,4 @@
+import { TABLET_BREAKPOINT } from "../../config/config";
 import { Theme } from "../../types/themeTypes";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
@@ -11,6 +12,10 @@ type CountProps = {
 const Count = styled.p<CountProps>`
     font: var(--f-mobile-heading-m-regular-italic);
     color: ${props => (props.$theme === "light" ? "var(--clr-dt-700)" : "var(--clr-lt-300)")};
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        font: var(--f-body-s);
+    }
 `;
 
 function QuestionCount() {

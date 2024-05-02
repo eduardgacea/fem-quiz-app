@@ -22,21 +22,32 @@ const GlobalStyles = createGlobalStyle`
     --clr-dt-600: #3b4d66;
     --clr-dt-300: #313e51;    
     /* icons */
-    --i-size: 1.78125rem;
+    --i-size-mobile: 1.78125rem;
+    --i-size-table: 2.5rem;
     ${colorMap}
 
     /* typography */
     /* families */
     --ff-primary: "Rubik", sans-serif;
     /* styles */
+    --f-display: normal normal 500 9rem/100% var(--ff-primary);
+    --f-body-s: italic normal 400 1.25rem/150% var(--ff-primary);
+    --f-body-m: normal normal 400 1.5rem/150% var(--ff-primary);
+    --f-heading-l-light: normal normal 300 4rem/100% var(--ff-primary);
+    --f-heading-l-medium: normal normal 500 4rem/100% var(--ff-primary);
+    --f-heading-m-medium: normal normal 500 2.25rem/120% var(--ff-primary);
     --f-mobile-heading-l-light: normal normal 300 2.5rem/100% var(--ff-primary);
     --f-mobile-heading-l-medium: normal normal 500 2.5rem/100% var(--ff-primary);
     --f-mobile-heading-m-regular-italic: italic normal 400 0.875rem/150% var(--ff-primary);
     --f-mobile-body-regular: normal normal 400 1.125rem/100% var(--ff-primary);
     --f-mobile-question: normal normal 500 1.25rem/120% var(--ff-primary);
     --f-mobile-option: normal normal 500 1.125rem/150% var(--ff-primary);
-    --f-button: normal normal 500 1.125rem/100% var(--ff-primary);
+    --f-tablet-option: normal normal 500 1.75rem/100% var(--ff-primary);
+    --f-button-mobile: normal normal 500 1.125rem/100% var(--ff-primary);
+    --f-button-tablet: normal normal 500 1.75rem/100% var(--ff-primary);
     --f-score: normal normal 500 5.5rem/100% var(--ff-primary);
+    --f-mobile-option-icon: normal normal 500 1.125rem/100% var(--ff-primary);
+    --f-tablet-option-icon: normal normal 500 1.75rem/100% var(--ff-primary);
     }
 
     * {

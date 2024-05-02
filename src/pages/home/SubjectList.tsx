@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import Option from "../../ui/Option";
 
 import styled from "styled-components";
+import { TABLET_BREAKPOINT } from "../../config/config";
 
 const List = styled.ul`
     margin: 2.5rem 0 0 0;
@@ -12,6 +13,13 @@ const List = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        & {
+            margin-top: 4rem;
+            gap: 1.5rem;
+        }
+    }
 `;
 
 function SubjectList() {

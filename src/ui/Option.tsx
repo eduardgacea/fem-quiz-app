@@ -1,3 +1,4 @@
+import { TABLET_BREAKPOINT } from "../config/config";
 import { Theme } from "../types/themeTypes";
 import { Status } from "../types/gameTypes";
 import { RootState } from "../redux/store";
@@ -41,7 +42,7 @@ const MainContainer = styled.li<MainContainerProps>`
 
     background-color: ${props => {
         if (props.$isTransparent) return "transparent";
-        else return props.$theme === "light" ? "var(--clr-white)" : "var(--clr-dt-600)";
+        else return props.$theme === "light" ? "var(--clr-lt-700)" : "var(--clr-dt-600)";
     }};
 
     padding: ${props => (props.$isTransparent ? "0" : "0.75rem")};
@@ -57,6 +58,14 @@ const MainContainer = styled.li<MainContainerProps>`
     h2 {
         font: var(--f-mobile-option);
         color: ${props => (props.$theme === "light" ? "var(--clr-dt-300)" : "var(--clr-lt-700)")};
+    }
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        border-radius: 1.5rem;
+
+        h2 {
+            font: var(--f-tablet-option);
+        }
     }
 `;
 
@@ -86,7 +95,22 @@ const IconContainer = styled.div<IconContainerProps>`
     ${props => props.$isSelected && "color: var(--clr-white)"};
 
     & > img {
-        width: var(--i-size);
+        width: var(--i-size-mobile);
+    }
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        & {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            min-height: 56px;
+            border-radius: 0.75rem;
+            font: var(--f-tablet-option-icon);
+        }
+
+        & > img {
+            width: var(--i-size-tablet);
+        }
     }
 `;
 

@@ -1,3 +1,4 @@
+import { TABLET_BREAKPOINT } from "../../config/config";
 import { Theme } from "../../types/themeTypes";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
@@ -19,6 +20,10 @@ const Container = styled.div<ContainerProps>`
     border-radius: 999px;
     padding: 0.25rem;
     margin-bottom: 2.5rem;
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        margin-bottom: 4rem;
+    }
 `;
 
 const Fill = styled.div<FillProps>`

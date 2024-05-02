@@ -1,3 +1,4 @@
+import { TABLET_BREAKPOINT } from "../../config/config";
 import { useDispatch, useSelector } from "react-redux";
 import { newGame } from "../../slices/gameSlice";
 import { Theme } from "../../types/themeTypes";
@@ -14,6 +15,10 @@ type ScoreCardProps = {
 
 const ScoreCardWrapper = styled.div`
     margin-top: 2.5rem;
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        margin-top: 4rem;
+    }
 `;
 
 const StyledScore = styled.div``;
@@ -40,6 +45,20 @@ const ScoreCard = styled.div<ScoreCardProps>`
     & ${StyledScore} :last-child {
         font: var(--f-mobile-body-regular);
         color: ${props => (props.$theme === "light" ? "var(--clr-dt-700)" : "var(--clr-lt-300)")};
+    }
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        margin-bottom: 2rem;
+        padding: 3rem;
+        gap: 2.5rem;
+
+        & ${StyledScore} :first-child {
+            font: var(--f-display);
+        }
+
+        & ${StyledScore} :last-child {
+            font: var(--f-body-m);
+        }
     }
 `;
 

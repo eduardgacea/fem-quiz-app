@@ -1,3 +1,4 @@
+import { TABLET_BREAKPOINT } from "../config/config";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 
@@ -10,6 +11,10 @@ const StyledHeader = styled.header`
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;
+
+    @media screen and (max-width: ${TABLET_BREAKPOINT}px) {
+        margin-bottom: 3rem;
+    }
 `;
 
 function Header() {

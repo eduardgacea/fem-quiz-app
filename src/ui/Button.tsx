@@ -1,3 +1,5 @@
+import { TABLET_BREAKPOINT } from "../config/config";
+
 import styled from "styled-components";
 
 type ButtonProps = {
@@ -15,7 +17,13 @@ const StyledButton = styled.button`
     color: var(--clr-white);
     border-radius: 0.75rem;
     cursor: pointer;
-    font: var(--f-button);
+    font: var(--f-button-mobile);
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        padding: 2rem;
+        font: var(--f-button-tablet);
+        border-radius: 1.5rem;
+    }
 `;
 
 function Button({ children, onClick }: ButtonProps) {

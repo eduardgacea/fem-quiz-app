@@ -1,4 +1,5 @@
 import { nextQuestion, selectOption, submitOption } from "../../slices/gameSlice";
+import { TABLET_BREAKPOINT } from "../../config/config";
 import { useDispatch, useSelector } from "react-redux";
 import { Status } from "../../types/gameTypes";
 import { RootState } from "../../redux/store";
@@ -24,6 +25,11 @@ const StyledOptionsList = styled.ol`
     gap: 0.75rem;
     padding: 0;
     margin: 0 0 0.75rem 0;
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        gap: 1.5rem;
+        margin: 0 0 2rem 0;
+    }
 `;
 
 function OptionsList() {

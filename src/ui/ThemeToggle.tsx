@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { TABLET_BREAKPOINT } from "../config/config";
 import { toggleTheme } from "../slices/themeSlice";
 import { RootState } from "../redux/store";
 import { Form } from "react-bootstrap";
@@ -10,7 +11,7 @@ const Container = styled.div`
     align-items: center;
 
     & > form {
-        padding-left: 0.5em;
+        padding: 0 0.75em;
     }
 `;
 
@@ -22,7 +23,22 @@ const StyledSwitch = styled(Form)`
     }
 
     & .form-switch .form-check-input {
+        width: 2rem;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    & .form-check-input {
+        height: 1.25rem;
+    }
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        & .form-switch .form-check-input {
+            width: 3rem;
+        }
+
+        & .form-check-input {
+            height: 1.75rem;
+        }
     }
 `;
 

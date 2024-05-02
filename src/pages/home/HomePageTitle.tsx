@@ -1,3 +1,4 @@
+import { TABLET_BREAKPOINT } from "../../config/config";
 import { Theme } from "../../types/themeTypes";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
@@ -29,6 +30,24 @@ const Header = styled.header<HeaderProps>`
     h3 {
         font: var(--f-mobile-heading-m-regular-italic);
         color: ${props => (props.$theme === "light" ? "var(--clr-dt-600)" : "var(--clr-lt-300)")};
+    }
+
+    @media screen and (min-width: ${TABLET_BREAKPOINT}px) {
+        & {
+            margin-top: 4rem;
+        }
+
+        & h1 > :first-child {
+            font: var(--f-heading-l-light);
+        }
+
+        & h1 > :last-child {
+            font: var(--f-heading-l-medium);
+        }
+
+        & h3 {
+            font: var(--f-body-s);
+        }
     }
 `;
 
