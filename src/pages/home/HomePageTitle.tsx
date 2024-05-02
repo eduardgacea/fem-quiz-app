@@ -70,7 +70,7 @@ function HomePageTitle() {
                 <span>Welcome to the</span>
                 <span>Frontend Quiz!</span>
             </h1>
-            <h3>Pick a subject to get started.</h3>
+            <h2>Pick a subject to get started.</h2>
         </Header>
     );
 }
